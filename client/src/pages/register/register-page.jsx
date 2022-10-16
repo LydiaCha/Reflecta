@@ -6,6 +6,7 @@ const RegisterPage = ({ setLoginUser }) => {
     <Container fluid className="register-page">
       <h1 className="register-page__title">Register to Reflecta</h1>
       <RegisterForm />
+      <a href="/login">Already have an account? Log in here</a>
     </Container>
   );
 };
