@@ -1,6 +1,8 @@
 @import "./App.scss";
 @import "./pages/login/login-page.scss";
+@import "./pages/register/register-page.scss";
 @import "./components/login-form/login-form.scss";
+@import "./components/register-form/register-form.scss";
 
 body {
   background-color: lightgray;

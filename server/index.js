@@ -26,7 +26,6 @@ const userSchema = new mongoose.Schema({
 const Users = new mongoose.model("users", userSchema)
 
 app.post("/login", (req, res) => {
-    console.log('huh', Users)
     const { userName, password } = req.body;
     Users.findOne({ userName: userName }, (err, user) => {
         console.log(user, userName, password)
@@ -44,6 +43,24 @@ app.post("/login", (req, res) => {
         }
     })
 });
+
+app.post("/register", (req, res) => {
+    const { userName, password } = req.body;
+    Users.findOne({ userName: userName }, (err, user) => {
+        if (user) {
+            res.send({ status: 'failed', message: "user already exist" })
+        } else {
+            const user = new Users({ userName, password })
+            user.save(err => {
+                if (err) {
+                    res.send(err)
+                } else {
+                    res.send({ message: "sucessfully registered!" })
+                }
+            })
+        }
+    })
+})
 
 app.listen(5000, () => {
     console.log("started")

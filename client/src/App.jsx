@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LoginPage from "./pages/login/login-page";
+import RegisterPage from "./pages/register/register-page";
 
 function App() {
   const [user, setLoginUser] = useState({});
@@ -14,6 +15,7 @@ function App() {
             path="/login"
             element={<LoginPage setLoginUser={setLoginUser} />}
           />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </BrowserRouter>
     </div>

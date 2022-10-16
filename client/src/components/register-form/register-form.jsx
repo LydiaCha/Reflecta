@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-const LoginForm = ({ setLoginUser }) => {
+const RegisterForm = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     userName: "",
@@ -21,17 +21,23 @@ const LoginForm = ({ setLoginUser }) => {
     });
   };
 
-  const login = (e) => {
+  const register = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/login", user).then((res) => {
-      alert(res.data.message);
-      setLoginUser(res.data.user);
-      navigate("/ah");
-    });
+    const { userName, password } = user;
+    if (userName && password) {
+      axios.post("http://localhost:5000/register", user).then((res) => {
+        alert(res.data.message);
+        if (res.data.status !== "failed") {
+          navigate("/login");
+        }
+      });
+    } else {
+      alert("invalid input");
+    }
   };
 
   return (
-    <Container className="login-form">
+    <Container className="register-form">
       <Form>
         <Form.Group className="mb-3">
           <Form.Label>Username</Form.Label>
@@ -53,12 +59,12 @@ const LoginForm = ({ setLoginUser }) => {
             onChange={handleChange}
           />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={login}>
-          Login
+        <Button variant="primary" type="submit" onClick={register}>
+          Register
         </Button>
       </Form>
     </Container>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
