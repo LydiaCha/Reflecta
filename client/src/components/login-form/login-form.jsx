@@ -26,7 +26,7 @@ const LoginForm = ({ setLoginUser }) => {
     axios.post("http://localhost:5000/login", user).then((res) => {
       alert(res.data.message);
       setLoginUser(res.data.user);
-      navigate("/ah");
+      navigate("/");
     });
   };
 

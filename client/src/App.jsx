@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LoginPage from "./pages/login/login-page";
 import RegisterPage from "./pages/register/register-page";
+import HomePage from "./pages/home/home-page";
 
 function App() {
   const [user, setLoginUser] = useState({});
@@ -11,6 +12,17 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              user && user._id ? (
+                <HomePage user={user} />
+              ) : (
+                <LoginPage setLoginUser={setLoginUser} />
+              )
+            }
+          ></Route>
           <Route
             path="/login"
             element={<LoginPage setLoginUser={setLoginUser} />}
