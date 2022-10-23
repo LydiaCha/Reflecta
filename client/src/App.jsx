@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/login/login-page";
 import RegisterPage from "./pages/register/register-page";
 import HomePage from "./pages/home/home-page";
+import ReflectionPage from "./pages/reflection/reflection-page";
 
 function App() {
   const [user, setLoginUser] = useState({});
@@ -28,6 +29,7 @@ function App() {
             element={<LoginPage setLoginUser={setLoginUser} />}
           />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/reflection" element={<ReflectionPage />} />
         </Routes>
       </BrowserRouter>
     </div>

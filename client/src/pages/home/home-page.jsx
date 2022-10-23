@@ -1,5 +1,6 @@
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 
 const HomePage = ({ user }) => {
   return (
@@ -11,9 +12,11 @@ const HomePage = ({ user }) => {
       <p>Let's get started</p>
       <Container className="home-page__menu">
         <Container>
-          <Card>
-            <Card.Body>Start today's reflection</Card.Body>
-          </Card>
+          <Link to="/reflection">
+            <Card>
+              <Card.Body>Start today's reflection</Card.Body>
+            </Card>
+          </Link>
         </Container>
         <Container>
           <Card>
