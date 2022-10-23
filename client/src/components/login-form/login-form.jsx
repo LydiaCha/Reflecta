@@ -26,6 +26,7 @@ const LoginForm = ({ setLoginUser }) => {
     axios.post("http://localhost:5000/login", user).then((res) => {
       alert(res.data.message);
       setLoginUser(res.data.user);
+      localStorage.setItem("user", res.data.user._id);
       navigate("/");
     });
   };

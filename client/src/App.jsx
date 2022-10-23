@@ -1,13 +1,28 @@
 import { useState } from "react";
+import axios from "axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LoginPage from "./pages/login/login-page";
 import RegisterPage from "./pages/register/register-page";
 import HomePage from "./pages/home/home-page";
 import ReflectionPage from "./pages/reflection/reflection-page";
+import { useEffect } from "react";
 
 function App() {
   const [user, setLoginUser] = useState({});
+
+  const findUser = (userID) => {
+    axios.post("http://localhost:5000/get-user", { id: userID }).then((res) => {
+      setLoginUser(res.data.user);
+    });
+  };
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      findUser(user);
+    }
+  }, []);
 
   return (
     <div className="App">

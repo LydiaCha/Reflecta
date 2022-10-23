@@ -25,13 +25,23 @@ const userSchema = new mongoose.Schema({
 
 const Users = new mongoose.model("users", userSchema)
 
+app.post("/get-user", (req, res) => {
+    const { id } = req.body;
+    Users.findOne({ _id: id }, (err, user) => {
+        if (user) {
+            console.log(user)
+
+            res.send({ user: user })
+        }
+    }
+    )
+});
+
 app.post("/login", (req, res) => {
     const { userName, password } = req.body;
     Users.findOne({ userName: userName }, (err, user) => {
-        console.log(user, userName, password)
         if (user) {
             if (password === user.password) {
-                console.log('hello')
                 res.send({ message: "login sucess", user: user })
             } else {
                 console.log('bad')

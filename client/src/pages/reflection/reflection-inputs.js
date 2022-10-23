@@ -49,7 +49,7 @@ export const steps = [
     {
         id: 'END',
         component: (
-            <Link to='/'>
+            <Link to='/' className="reflection-exit-link">
                 <div> Click here to exit</div>
             </Link>
         ),
