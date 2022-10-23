@@ -13,7 +13,10 @@ function App() {
 
   const findUser = (userID) => {
     axios.post("http://localhost:5000/get-user", { id: userID }).then((res) => {
-      setLoginUser(res.data.user);
+      setLoginUser({
+        _id: res.data.user._id,
+        userName: res.data.user.userName,
+      });
     });
   };
 
@@ -44,7 +47,7 @@ function App() {
             element={<LoginPage setLoginUser={setLoginUser} />}
           />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/reflection" element={<ReflectionPage />} />
+          <Route path="/reflection" element={<ReflectionPage user={user} />} />
         </Routes>
       </BrowserRouter>
     </div>

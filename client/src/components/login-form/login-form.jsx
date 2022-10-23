@@ -25,7 +25,10 @@ const LoginForm = ({ setLoginUser }) => {
     e.preventDefault();
     axios.post("http://localhost:5000/login", user).then((res) => {
       alert(res.data.message);
-      setLoginUser(res.data.user);
+      setLoginUser({
+        _id: res.data.user._id,
+        userName: res.data.user.userName,
+      });
       localStorage.setItem("user", res.data.user._id);
       navigate("/");
     });

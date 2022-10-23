@@ -23,14 +23,19 @@ const userSchema = new mongoose.Schema({
     password: String
 })
 
+const reflectionSchema = new mongoose.Schema({
+    user: Object,
+    renderedSteps: Array,
+    time: String
+})
+
 const Users = new mongoose.model("users", userSchema)
+const Reflection = new mongoose.model("reflections", reflectionSchema)
 
 app.post("/get-user", (req, res) => {
     const { id } = req.body;
     Users.findOne({ _id: id }, (err, user) => {
         if (user) {
-            console.log(user)
-
             res.send({ user: user })
         }
     }
@@ -68,6 +73,18 @@ app.post("/register", (req, res) => {
                     res.send({ message: "sucessfully registered!" })
                 }
             })
+        }
+    })
+})
+
+app.post("/set-reflection", (req, res) => {
+    const { user, renderedSteps, time } = req.body;
+    const reflection = new Reflection({ user, renderedSteps, time })
+    reflection.save(err => {
+        if (err) {
+            res.send(err)
+        } else {
+            res.send({ message: "sucessfully registered!" })
         }
     })
 })

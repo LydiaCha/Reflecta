@@ -1,11 +1,20 @@
+import axios from "axios";
+
 import Container from "react-bootstrap/Container";
 import ChatBot from "react-simple-chatbot";
 
 import { steps } from "./reflection-inputs";
 
-const ReflectionPage = () => {
+const ReflectionPage = ({ user }) => {
   const handleEnd = ({ renderedSteps }) => {
-    console.log(renderedSteps);
+    const timeStamp = new Date(Date.now());
+    axios
+      .post("http://localhost:5000/set-reflection", {
+        user,
+        renderedSteps,
+        time: timeStamp.toLocaleString("en-GB"),
+      })
+      .then((res) => {});
   };
 
   return (
