@@ -89,6 +89,15 @@ app.post("/set-reflection", (req, res) => {
     })
 })
 
+app.post("/get-reflections", (req, res) => {
+    const { id } = req.body;
+    Reflection.find({ "user._id": id }, (err, reflections) => {
+        if (reflections.length) {
+            res.send({ reflections: reflections })
+        }
+    })
+})
+
 app.listen(5000, () => {
     console.log("started")
 })

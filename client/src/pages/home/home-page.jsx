@@ -19,9 +19,11 @@ const HomePage = ({ user }) => {
           </Link>
         </Container>
         <Container>
-          <Card>
-            <Card.Body>Reflection history</Card.Body>
-          </Card>
+          <Link to="/history">
+            <Card>
+              <Card.Body>Reflection history</Card.Body>
+            </Card>
+          </Link>
         </Container>
         <Container>
           <Card>

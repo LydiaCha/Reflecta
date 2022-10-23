@@ -8,9 +8,11 @@ import HomePage from "./pages/home/home-page";
 import ReflectionPage from "./pages/reflection/reflection-page";
 import { useEffect } from "react";
 import NavBar from "./components/nav-bar/nav-bar";
+import HistoryPage from "./pages/history/history-page";
 
 function App() {
   const [user, setLoginUser] = useState({});
+  const [reflections, setReflections] = useState([]);
 
   const findUser = (userID) => {
     axios.post("http://localhost:5000/get-user", { id: userID }).then((res) => {
@@ -21,12 +23,26 @@ function App() {
     });
   };
 
+  const getReflections = (userID) => {
+    axios
+      .post("http://localhost:5000/get-reflections", { id: userID })
+      .then((res) => {
+        setReflections(res.data.reflections);
+      });
+  };
+
   useEffect(() => {
     const user = localStorage.getItem("user");
     if (user) {
       findUser(user);
     }
   }, []);
+
+  useEffect(() => {
+    if (Boolean(user._id)) {
+      getReflections(user._id);
+    }
+  }, [user]);
 
   return (
     <div className="App">
@@ -50,6 +66,10 @@ function App() {
           />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/reflection" element={<ReflectionPage user={user} />} />
+          <Route
+            path="/history"
+            element={<HistoryPage reflections={reflections} />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
