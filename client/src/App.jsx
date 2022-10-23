@@ -7,6 +7,7 @@ import RegisterPage from "./pages/register/register-page";
 import HomePage from "./pages/home/home-page";
 import ReflectionPage from "./pages/reflection/reflection-page";
 import { useEffect } from "react";
+import NavBar from "./components/nav-bar/nav-bar";
 
 function App() {
   const [user, setLoginUser] = useState({});
@@ -30,6 +31,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <NavBar user={user.userName} />
         <Routes>
           <Route
             exact

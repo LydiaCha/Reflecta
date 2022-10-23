@@ -5,6 +5,7 @@
 @import "./pages/home/home-page.scss";
 @import "./components/login-form/login-form.scss";
 @import "./components/register-form/register-form.scss";
+@import "./components/nav-bar/nav-bar.scss";
 
 body {
   background-color: rgb(229, 255, 252);
