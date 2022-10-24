@@ -1,11 +1,17 @@
 import axios from "axios";
 
+import { useEffect } from "react";
+
 import Container from "react-bootstrap/Container";
 import ChatBot from "react-simple-chatbot";
 
 import { steps } from "./reflection-inputs";
 
-const ReflectionPage = ({ user }) => {
+const ReflectionPage = ({ user, setCurrentPage }) => {
+  useEffect(() => {
+    setCurrentPage("REFLECTION");
+  });
+
   const handleEnd = ({ renderedSteps }) => {
     const timeStamp = new Date(Date.now());
     axios
@@ -19,7 +25,6 @@ const ReflectionPage = ({ user }) => {
 
   return (
     <Container fluid className="reflection-page">
-      <h1>Your reflection</h1>
       <ChatBot
         steps={steps}
         botDelay={500}

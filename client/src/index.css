@@ -7,6 +7,7 @@
 @import "./components/login-form/login-form.scss";
 @import "./components/register-form/register-form.scss";
 @import "./components/nav-bar/nav-bar.scss";
+@import "./components/secondary-nav-bar/secondary-nav-bar.scss";
 
 body {
   background-color: rgb(229, 255, 252);

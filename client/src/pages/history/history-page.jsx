@@ -7,8 +7,12 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 
-const HistoryPage = ({ reflections }) => {
+const HistoryPage = ({ reflections, setCurrentPage }) => {
   const [reflection, setReflection] = useState();
+
+  useEffect(() => {
+    setCurrentPage("HISTORY");
+  });
 
   useEffect(() => {
     setReflection(reflections[0]);

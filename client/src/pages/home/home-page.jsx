@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
-const HomePage = ({ user }) => {
+const HomePage = ({ user, setCurrentPage }) => {
+  useEffect(() => {
+    setCurrentPage("HOME");
+  });
+
   return (
     <Container fluid className="home-page">
       <h1 className="home-page__title">

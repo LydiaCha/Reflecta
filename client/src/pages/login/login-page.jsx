@@ -1,7 +1,13 @@
+import { useEffect } from "react";
+
 import Container from "react-bootstrap/Container";
 import LoginForm from "../../components/login-form/login-form";
 
-const LoginPage = ({ setLoginUser }) => {
+const LoginPage = ({ setLoginUser, setCurrentPage }) => {
+  useEffect(() => {
+    setCurrentPage("LOG IN");
+  });
+
   return (
     <Container fluid className="login-page">
       <LoginForm setLoginUser={setLoginUser} />
