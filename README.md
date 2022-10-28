@@ -6,6 +6,13 @@ Reflecta is a mobile optimised platform that facilitates the process of reflecti
 
 ## How to run locally
 
+### Prerequisited 
+
+- To have Node and npm package manager installed on your machine - https://docs.npmjs.com/downloading-and-installing-node-js-and-npm 
+- To have yarn package manager installed on your machine -  https://classic.yarnpkg.com/en/docs/install
+
+---
+
 Clone the repo, if you haven't already done so. Pull main to get the latest changes
 
 The repo contains two apps. The client and the server.
@@ -15,7 +22,6 @@ The repo contains two apps. The client and the server.
 1. open a new terminal instance for Reflecta
 2. go into the client folder - `cd client`
 3. run - `yarn install`
-   - if you don't have yarn, find instructions to install yarn
 4. run - `yarn start`
 
 ### Server
